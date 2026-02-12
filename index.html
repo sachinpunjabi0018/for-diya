@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Diya ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      color: #333;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #ff4d88;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    .story, .letters, .timeline {
+      max-width: 800px;
+      margin: auto;
+    }
+    .gallery img {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .letter {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .timeline-item {
+      margin: 20px 0;
+      font-weight: 500;
+    }
+    footer {
+      padding: 30px;
+      background: #ffccd9;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+      color: #ff3366;
+    }
+    /* Gallery layout */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 220px);
+      justify-content: center;
+      gap: 28px;
+      max-width: 900px;
+     margin: 60px auto 0;
+    }
+    /* Gallery images */
+    .gallery img {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    /* Hover effect */
+    .gallery img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+    /* Mobile responsiveness */
+      @media (max-width: 768px) {
+      .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery img {
+      width: 100%;
+      height: 240px;
+  }
+}
+#music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4d88;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1000;
+}
+
+#music-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+/* Photo captions */
+.photo-card {
+  text-align: center;
+}
+.photo-card p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+}
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Kiss reveal */
+.kiss-reveal {
+  text-align: center;
+  margin-top: 60px;
+  cursor: pointer;
+}
+
+#kiss-emoji {
+  display: none;
+  font-size: 2.5rem;
+  margin-top: 10px;
+  animation: kissPop 0.6s ease forwards;
+}
+
+@keyframes kissPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Floating hearts */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.hearts-container span {
+  position: absolute;
+  bottom: -10%;
+  font-size: 20px;
+  opacity: 0.45;
+  animation: floatUp 12s linear infinite;
+}
+
+.hearts-container span:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.hearts-container span:nth-child(2) {
+  left: 50%;
+  animation-delay: 4s;
+}
+
+.hearts-container span:nth-child(3) {
+  left: 75%;
+  animation-delay: 8s;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-120vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts-container">
+  <span>💗</span>
+  <span>💗</span>
+  <span>💗</span>
+</div>
+
+  <!-- Background Music -->
+ <audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-btn">🎶 Play music for you ❤️</button>
+
+  <!-- Hero Section -->
+  <section class="hero fade-in">
+    <h1>Diya ❤️</h1>
+    <p>To the girl who made my world brighter</p>
+  </section>
+
+  <!-- Our Story -->
+  <section class="story fade-in">
+    <h2>Our Story</h2>
+    <p>
+      From the moment you entered my life, everything changed.
+      Your warmth, kindness, and understanding bring meaning and 
+      joy to each day. This website is a small expression of how
+      much you mean to me — how deeply I care for you and how important 
+      you are in my life. There is a moment where, everything else 
+      fades away — no distractions, no noise, just us hugging each other 
+      Tight!! On difficult days, revisiting our memories reminds me of
+      what truly matters. As Friends so perfectly puts it, “You’re my 
+      lobster” — my constant, my comfort, and the one I want to share 
+      every chapter of life with. I look forward to cherishing every
+      moment we share and building a lifetime of memories together❤️. 
+
+      
+  </p>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery fade-in">
+  <h2>Our Memories 📸</h2>
+
+  <div class="photo-card">
+    <img src="photo1.jpg">
+    <p>I love you ❤️</p>
+  </div>
+
+  <div class="photo-card">
+    <img src="photo2.jpg">
+    <p>4 more nuggets?👉🏻👈🏻😋</p>
+  </div>
+
+  <div class="photo-card">
+    <img src="photo3.jpg">
+    <p>SMASHHH!!😝😋</p>
+  </div>
+
+  <div class="photo-card">
+    <img src="photo4.jpg">
+    <p>just gimme a bite of those cheeks already😘😋</p>
+  </div>
+
+  <div class="photo-card">
+    <img src="photo5.jpg">
+    <p>Still choosing you, always 💕</p>
+  </div>
+
+</section>
+
+  <!-- Love Letters -->
+  <section class="letters fade-in">
+    <h2>Little Notes for You 💌</h2>
+    <div class="letter">You make even my worst days feel better.</div>
+    <div class="letter">I fall for you a little more every single day.</div>
+    <div class="letter">You are my favorite person, always.</div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline fade-in">
+  <h2>Our Journey ⏳</h2>
+
+  <div class="timeline-item">
+    <h3>✨ The day we first talked</h3>
+    <p>
+      From the very first day we spoke, I was afraid it might slip away — that 
+      you wouldn’t feel the same. Every pause in our conversation felt like a quiet sign telling me to walk away.
+      But you didn’t let that happen. You stayed, and that alone meant more to me than you could ever know.
+      When you asked to meet again after our first date, it caught me completely by surprise and filled my 
+      heart with a happiness I couldn’t hide. I couldn’t take my eyes off you — you felt radiant.
+      I wanted to lean in, to ask if I could kiss you😝, but I held back, saving that moment for another time.
+      And then, at the end of the day, you ran toward me and wrapped me in that warm, unexpected hug. 
+      That moment is etched in my heart forever. Right then, I knew — you were the one I wanted, without a single doubt😚❤️.
+   </p>
+  </div>
+
+  <div class="timeline-item">
+    <h3>💖 The moment my heart stopped asking questions</h3>
+    <p>
+      There were questions, of course—the quiet ones that kept circling my mind.
+      Am I right for her? Is she comfortable with me? Do I mean something to her? All of them disappeared the moment 
+      we met on our second date. The very next day after my birthday, at Byg Brewski — you walked in holding a bouquet
+      of flowers and a chocolate. And just like that, everything made sense. I still can’t quite believe it. Someone 
+      giving me flowers had always felt like a distant dream, something that only happened in stories. Yet there you were, 
+      turning that dream into something real. You were breathtaking that day—astonishingly beautiful. Honestly… you always are.
+      No cap.
+    </p>
+  </div>
+
+  <div class="timeline-item">
+    <h3>🌸 Today — still choosing you</h3>
+    <p>
+      If our love were part of Friends, it wouldn’t just be one episode — it’d be the kind you never skip.
+      Today, I choose you. And like Monica choosing Chandler — without hesitation — I know it’s you, always.
+      You’re my first Valentine, and you’ll be my last.
+      No breaks, no doubts, no background laugh track needed — just us, growing stronger every day.
+      You’re irreplaceable. You’re my comfort, my constant, my favorite place to be.
+      I love you, now and forever.
+      Happy Valentine’s Day, my baby ❤️
+
+    </p>
+  </div>
+</section>
+
+<div class="kiss-reveal fade-in">
+  <p id="kiss-text">Still here?</p>
+  <p id="kiss-emoji">💋</p>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    Forever & Always 💕
+  </footer>
+<!-- Fullscreen Image Viewer -->
+<div id="lightbox" style="
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+">
+  <img id="lightbox-img" style="
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+  ">
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
+  let isPlaying = false;
+
+  btn.addEventListener("click", () => {
+    if (!isPlaying) {
+      music.play();
+      btn.textContent = "⏸️ Pause music";
+    } else {
+      music.pause();
+      btn.textContent = "🎶 Play music for you ❤️";
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+<script>
+  const fadeElements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeElements.forEach(el => observer.observe(el));
+</script>
+<script>
+  const kissText = document.getElementById("kiss-text");
+  const kissEmoji = document.getElementById("kiss-emoji");
+
+  kissText.addEventListener("click", () => {
+    kissText.style.display = "none";
+    kissEmoji.style.display = "block";
+  });
+</script>
+</body>
+</html>
